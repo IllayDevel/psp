@@ -6,8 +6,6 @@ import string
 import sys
 import base64
 import pickle
-#import dis
-#from prettytable import PrettyTable
 
 try:
     import copyreg  # Py 3
@@ -30,7 +28,8 @@ def reduce_code(co):
 
 copyreg.pickle(types.CodeType, reduce_code)
 
-HEADER = """import zlib, base64, pickle, types
+HEADER = """#This file encrypted PSP v1.0 (https://github.com/IllayDevel/psp)
+import zlib, base64, pickle, types
 {code} = b'eNqFUktrwzAMvvdX6JiMEDZ6GYX2MnbYfbdSgucqwdS1jKR0y379nObRjnbMJ0nfw0aflbvVAtJxx0isYCl2jM0CvyxGhbfz9JWZ+IZWJR4YmSV7rFO9x8oqcfZguJF8EDFqywG0iyjlS6K8p2pknGWM+9YmYYIyS6Oqh2ENsLVUWqpSa6kNWsDQB0/WeJlaUWMP4r6xOIunM4C1N83M7G+51EF0RoI5otzTnwwP2OTnPPaDa+EFY1HvAga6Z+UDqfmYyYyYzC9vQ+/7fjcsuwbppDwhi6NQuVDT9nEHmzUsV7N1v6bSBUHW7GnyOXxS8N20svwvN9hAtizgOf/HLpLc+o2pzpEXoG30mA2xjr+ijM4e0vB39sV14vkPPGbTgQ=='
 exec(zlib.decompress(bytearray(base64.b64decode({code}))))
 {name} = {value}
@@ -38,14 +37,6 @@ exec(pickle.loads(zlib.decompress(bytearray(base64.b64decode({name})))))"""
 
 def encode(from_file, to_file):
     file = io.open(from_file, 'r').read()
-#    bytecode = dis.Bytecode(file)
-#    t = PrettyTable(['Opcode', 'Opname', 'Argument', 'Argument value', 'Argument readable', 'Offset', 'Starts line',
-#                     'Is jump?'])
-#    for instr in bytecode:
-#        t.add_row(
-#            [instr.opcode, instr.opname, instr.arg, instr.argval, instr.argrepr, instr.offset, instr.starts_line,
-#             instr.is_jump_target])
-#    print(t)
     codeobj = compile(file, 'fakemodule', 'exec')
     print("[INFO] Compress data")
     CompressedData = zlib.compress(pickle.dumps(codeobj), 9)
