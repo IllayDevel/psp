@@ -14,7 +14,7 @@ Simple python script to encode and protect your python scripts
 ## Usage
 
 ```sh
-python3 enc.py in.py out.py num_steps (optional)
+python enc.py in.py out.py num_steps (optional)
 ```
 
 ## License
