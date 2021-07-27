@@ -144,9 +144,10 @@ else:
        elif (len(sys.argv)==4):
            for i in range(int(sys.argv[3])):
                if (i==0):
+                   print("Step: " + str(i+1))
                    encode(sys.argv[1], sys.argv[2])
                else:
-                   print("Step: "+str(i))
+                   print("Step: "+str(i+1))
                    encode(sys.argv[2], sys.argv[2])
 
     except:
