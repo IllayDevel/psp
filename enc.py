@@ -125,7 +125,7 @@ exec(pickle.loads(zlib.decompress(bytearray(base64.b64decode({name})))))"""
 def encode(from_file, to_file):
     file = io.open(from_file, 'r').read()
     print("[INFO] Compile file")
-    codeobj = compile(minimize_source(file), get_unic_name(), 'exec')
+    codeobj = compile(minimize_source(file), get_unic_name(), 'exec', flags=0, dont_inherit=False, optimize=2)
     print("[INFO] Compress data")
     CompressedData = zlib.compress(pickle.dumps(codeobj), 9)
     print("[INFO] Save Data")
