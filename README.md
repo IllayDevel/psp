@@ -17,6 +17,10 @@ Simple python script to encode and protect your python scripts
 python enc.py in.py out.py num_steps (optional)
 ```
 
+## Warning
+All tests passed on Python 3.8.10
+If you have problems, leave me feedback 
+
 ## License
 
 Apache
