@@ -25,5 +25,4 @@ If you have problems, leave me feedback
 
 Apache
 
-**Free Software, Hell Yeah!**
 
